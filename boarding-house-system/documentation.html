@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Boarding House System Documentation</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; }
+    h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+    h2 { color: #2980b9; margin-top: 30px; }
+    table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+    code { background: #f4f4f4; padding: 2px 5px; border-radius: 3px; }
+    .screenshot { max-width: 100%; border: 1px solid #ddd; margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <h1>Boarding House Management System Documentation</h1>
+  
+  <h2>System Overview</h2>
+  <p>A complete web-based management system for boarding houses with:</p>
+  <ul>
+    <li>Tenant management</li>
+    <li>Room management</li>
+    <li>Payment tracking</li>
+    <li>Maintenance requests</li>
+    <li>Dashboard analytics</li>
+  </ul>
+
+  <h2>Key Features</h2>
+  
+  <h3>1. Tenant Management</h3>
+  <ul>
+    <li>Add/edit/delete tenant records</li>
+    <li>View tenant details</li>
+    <li>Search and filter functionality</li>
+    <li>Responsive design for all devices</li>
+  </ul>
+
+  <h3>2. Room Management</h3>
+  <ul>
+    <li>Room status tracking (available/occupied/maintenance)</li>
+    <li>Capacity management</li>
+    <li>Floor-wise organization</li>
+    <li>Visual indicators for room status</li>
+  </ul>
+
+  <h2>Technical Implementation</h2>
+  
+  <h3>Frontend</h3>
+  <ul>
+    <li>HTML5, CSS3, JavaScript</li>
+    <li>Tailwind CSS for styling</li>
+    <li>Chart.js for visualizations</li>
+    <li>Font Awesome icons</li>
+  </ul>
+
+  <h3>Backend API Endpoints</h3>
+  <table>
+    <tr><th>Endpoint</th><th>Method</th><th>Description</th></tr>
+    <tr><td>/api/v1/tenants</td><td>GET</td><td>Get all tenants</td></tr>
+    <tr><td>/api/v1/tenants</td><td>POST</td><td>Create new tenant</td></tr>
+    <tr><td>/api/v1/rooms</td><td>GET</td><td>Get all rooms</td></tr>
+    <tr><td>/api/v1/payments</td><td>POST</td><td>Record payment</td></tr>
+  </table>
+
+  <h2>Database Connection Setup</h2>
+  
+  <h3>1. MongoDB Installation</h3>
+  <p>Install MongoDB Community Edition:</p>
+  <ul>
+    <li><strong>Windows:</strong> Download installer from mongodb.com</li>
+    <li><strong>Mac:</strong> <code>brew install mongodb-community</code></li>
+    <li><strong>Linux:</strong> <code>sudo apt-get install mongodb</code></li>
+  </ul>
+
+  <h3>2. Database Configuration</h3>
+  <p>Edit the backend configuration file:</p>
+  <pre><code>// In server.js
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/boardingHouseDB', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});</code></pre>
+
+  <h3>3. Environment Variables</h3>
+  <p>Create a .env file in your backend directory:</p>
+  <pre><code>DB_URI=mongodb://localhost:27017/boardingHouseDB
+DB_USER=your_username
+DB_PASS=your_password
+JWT_SECRET=your_jwt_secret</code></pre>
+
+  <h3>4. Database Models</h3>
+  <p>Example User model (models/User.js):</p>
+  <pre><code>const mongoose = require('mongoose');
+const userSchema = new mongoose.Schema({
+  name: String,
+  email: { type: String, unique: true },
+  password: String,
+  role: String
+});
+module.exports = mongoose.model('User', userSchema);</code></pre>
+
+  <h2>Getting Started</h2>
+  <ol>
+    <li>Install dependencies: <code>npm install</code></li>
+    <li>Start MongoDB service: <code>mongod</code></li>
+    <li>Start backend server: <code>node server.js</code></li>
+    <li>Open frontend: <code>python3 -m http.server 8000 -d frontend</code></li>
+    <li>Access system at: <code>http://localhost:8000</code></li>
+  </ol>
+
+  <p>To convert this to PDF:</p>
+  <ol>
+    <li>Open this HTML file in your browser</li>
+    <li>Use the browser's Print function (Ctrl+P or Cmd+P)</li>
+    <li>Choose "Save as PDF" as the destination</li>
+  </ol>
+</body>
+</html>
